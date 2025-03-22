@@ -48,6 +48,7 @@ class EmployeeProfile(models.Model):
         ('F', 'Female'),
         ('O', 'Other'),
     ]
+    employee = models.OneToOneField(Employee,on_delete=models.CASCADE,null=True,blank=True)
 
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -55,6 +56,6 @@ class EmployeeProfile(models.Model):
     phone = models.CharField(max_length=15)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
-
+    profile_picture = models.ImageField(upload_to='profile_pics/', null=True, blank=True)  
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
