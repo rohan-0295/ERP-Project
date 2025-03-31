@@ -38,8 +38,10 @@ class Department(models.Model):
             self.dept_id = f"{prefix}{new_number:03d}"
 
         super().save(*args, **kwargs)
-
+        
     def __str__(self):
-        return f"{self.name} ({self.dept_id})"
+        return self.name
+
+
 
 

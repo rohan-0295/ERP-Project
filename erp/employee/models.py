@@ -14,9 +14,19 @@ class Employee(models.Model):
         ('INACTIVE', 'Inactive'),
         ('ON_LEAVE', 'On Leave'),
     ]
+    JOB_TITLE_CHOICES = [
+        ('SE', 'Software Engineer'),
+        ('SSE', 'Senior Software Engineer'),
+        ('TL', 'Team Lead'),
+        ('PM', 'Project Manager'),
+        ('HR', 'HR Manager'),
+        ('DA', 'Data Analyst'),
+        ('DS', 'Data Scientist'),
+        ('DEV', 'Developer'),
+    ]
 
     employee_id = models.CharField(max_length=20, unique=True, blank=True)
-    job_title = models.CharField(max_length=100)
+    job_title = models.CharField(max_length=50,choices=JOB_TITLE_CHOICES)
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
     employment_type = models.CharField(max_length=10, choices=EMPLOYMENT_TYPE_CHOICES)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES)
