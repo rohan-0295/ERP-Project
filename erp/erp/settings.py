@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'department',
     'performance',
     'assets',
+    'Attendance',
+    'Employee_Exit',
 ]
 
 MIDDLEWARE = [

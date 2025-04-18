@@ -30,3 +30,19 @@ class Tax(models.Model):
 
     def __str__(self):
         return f"{self.employee.employee_id} - {self.tax_type} - {self.tax_percentage}%"
+    
+    
+class EmployeeSalaryView(models.Model):
+    employee_id = models.IntegerField(primary_key=True)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    job_title = models.CharField(max_length=100)
+    gross_salary = models.DecimalField(max_digits=10, decimal_places=2)
+    tax_percentage = models.DecimalField(max_digits=5, decimal_places=2)
+    total_bonus = models.DecimalField(max_digits=10, decimal_places=2)
+    net_salary = models.DecimalField(max_digits=10, decimal_places=2)
+
+    class Meta:
+        managed = False  
+        db_table = 'payroll_employee_salary_view' 
+

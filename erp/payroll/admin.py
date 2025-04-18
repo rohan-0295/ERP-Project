@@ -21,3 +21,13 @@ class TaxAdmin(admin.ModelAdmin):
     list_display = ('employee', 'tax_type', 'tax_percentage', 'tax_date')  # Added tax_percentage
     search_fields = ('employee__employee_id', 'tax_type')
     list_filter = ('tax_date', 'tax_type')
+    
+    
+# payroll/admin.py
+
+from .models import EmployeeSalaryView
+
+@admin.register(EmployeeSalaryView)
+class EmployeeSalaryViewAdmin(admin.ModelAdmin):
+    list_display = ('employee_id', 'first_name', 'last_name', 'job_title', 'gross_salary', 'tax_percentage', 'total_bonus', 'net_salary')
+
